@@ -13,7 +13,9 @@ pipeline {
 		}
 		stage('Test') {
 			agent {
-				image 'qnib/pytest'
+				docker {
+					image 'qnib/pytest'
+				}
 			}
 			steps {
 				sh 'py.test --verbose --junit-xml test-reports/results.xml sources/test_calc.py'
